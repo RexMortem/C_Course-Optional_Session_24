@@ -1,4 +1,4 @@
-# C Course 
+# C Course Optional Session 
 
 A basic, and hopefully gentle, introduction to the C Programming Language.
 
