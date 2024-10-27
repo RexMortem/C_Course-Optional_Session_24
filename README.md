@@ -2,7 +2,7 @@
 
 A basic, and hopefully gentle, introduction to the C Programming Language.
 
-This is an optional session with fairly hard exercises; don't worry about solving them all!
+This is an optional session with fairly hard exercises; don't worry about solving them all! Please do the first 3 sessions before attempting this optional session.
 
 ## What is the C Course?
 
