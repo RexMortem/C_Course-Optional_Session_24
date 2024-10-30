@@ -95,7 +95,7 @@ char* popStringFromStack(struct Stack* stack){
     stack->n -= 1;
 
     char* toReturn = memoryPointer[stack->n];
-    memoryPointer[stack->n] = NULL;
+    memoryPointer[stack->n] = NULL; // you don't really have to do this, but I like to ensure 
     return toReturn;
 }
 

@@ -48,18 +48,47 @@ int addIntToStack(struct Stack* stack, int x){
     return 1;
 }
 
+int popIntFromStack(struct Stack* stack){
+    if(stack->n == 0){
+        return -1;
+    }
+
+    int* memoryPointer = (int*) stack->memoryBlock;
+    stack->n -= 1;
+
+    return memoryPointer[stack->n];
+}
+
 int getIntFromStack(struct Stack* stack, int index){
     int* memoryPointer = (int*) stack->memoryBlock; // need to cast to int* so that C knows how to index 
     return memoryPointer[index];
 }
 
 int main(){
+    int n;
+    scanf("%d\n", &n); // read in n to pop off stack
+
     struct Stack intStack = newStack(sizeof(int), 1);
 
-    for(int i = 0; i < 20; i++){
-        addIntToStack(&intStack, i);
+    while(!feof(stdin)){
+        int x;
+        scanf("%d", &x);
+        
+        if(!feof(stdin)){
+            addIntToStack(&intStack, x);
+        }
     }
 
+    for(int i = 0; i < n; i++){
+        int x = popIntFromStack(&intStack);
+        printf("%d\n", x);
+    }
+
+    printf("\n");
+
+    for(int i = 0; i < intStack.n; i++){
+        printf("%s\n", getIntFromStack(&intStack, i));
+    }
     
 
     return 0;

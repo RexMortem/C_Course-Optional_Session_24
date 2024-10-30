@@ -21,32 +21,66 @@ struct Person {
 };
 ```
 
+Typically, we declare structs like this near the top of the file (outside of main).
 This effectively constructs a new type of object, so we can now declare variables of type `Person`! The variables in the struct are called **members** of the struct.
 
 ```c
 struct Person me;
 ```
 
-Okay so, how do we access members and initialise them? We can use `structName.memberName` and assign! 
+Okay so, how do we access members and initialise them? We can use `aStruct.memberName` and assign! 
 
 ```c
 me.age = 19;
 me.earnings = -9250; 
 ```
 
+### <a name="AssigningToArrays"> Arrays in Structs </a>
+
+There is an issue when we directly assign with arrays though: this is where the distinction between an array and a pointer becomes really important. A pointer could be assigned to easily, however you can't assign values to an array; you have to fill each individual element. 
+
+```c
+me.name[0] ='e';
+me.name[1] = 'd';
+```
+
+This is kind of annoying for strings, so we can use the `strcpy` (string **copy**) function from `<string.h>`. 
+
+```c
+strcpy(me.name, "Edward");
+```
+
+The reason this distinction exists is because structs store their members in contiguous memory locations. You can store a *pointer* in that contiguous memory location, which points to some far-off location though. 
+
+### <a name="StructPointers"> Pointers to Structs </a>
+
+Structs can be passed through functions fine; we don't always have to pass a pointer to the struct. However, this may mean copying lots of data and also taking up a lot of stack space which can be extremely important in tiny embedded systems. Of course, if you want a struct to be changed by a function, you have to pass a pointer to it (like an int, a char, or any other primitive type).
+
+Using pointers to structs is very straightforward; the main difference is that instead of using `aStruct.memberName`, we use `aStruct->memberName`.
+
+```c
+void printingStruct(struct Person* structPointer){
+    printf("Name: %s \n", structPointer->name);
+    printf("Age: %d \n", structPointer->age);
+    printf("Earnings: %d \n", structPointer->earnings);
+}
+```
+
+### <a name="KeyPoints"> Key Points </a>
+
 Key differences between structs and arrays:
 - structs have a specific size/number of members 
 - structs can contain members of different data types 
 
-
 ## <a name="Exercises"> </a>
 
-It's time for the spooky end to the C Course
+It's time for the spooky end to the C Course! 
 
 You're an up-and-coming career politician working for Party C, who has crawled up to the ranks and are primed to be a perfect candidate for Mayor of London - but oh no! You've made a crucial mistake; you coded something in Python! To punish you for using a language other than C, the party leader has relocated you to... Spookesville? You've never heard of this village, but if there's any way you're making it back to the big leagues, it's through making a name for yourself in this village. 
 
-Fortunately, you learn on arrival that the mayoral elections are happening this week! If you become the mayor of Spookesville, then *surely* you'll gain the trust of the Party again and be promoted out of this eerie little village in a year or so. The voting will end on Halloween, so you need to gain votes and fast! You learn at the local pub that the big players around the village are the **Haunts of Halloween**; you're not sure why they have such an ominous title, but years of being a career politician have told you to not ask questions and 
-With each exercise, you'll be asked to help a **Haunt of Halloween** and each Haunt will have their own particular demands; solve each of their problems to gain their trust and 
+Fortunately, you learn on arrival that the mayoral elections are happening this week! If you become the mayor of Spookesville, then *surely* you'll gain the trust of the Party again and be promoted out of this eerie little village in a year or so. The voting will end on Halloween, so you need to gain votes and fast! You learn at the local pub that the big players around the village are the **Haunts of Halloween**; you're not sure why they have such an ominous title, but years of being a career politician have told you to not ask questions and to impress the important people. You've heard that some of them have been having trouble around town, and could use your assistance! 
+
+With each exercise, you'll be asked to help a **Haunt of Halloween** and each Haunt will have their own particular demands; solve each of their problems to gain their trust and win the vote to become mayor! 
 
 **Note:** It may be easier for some to solve Problem 2 first. 
 
@@ -82,7 +116,7 @@ Sharon
 
 **Input:** An integer `n` (to represent number of bats to eliminate) followed by a number of lines with each line being the name of a bat. 
 
-**Input Constraints:** Each name is guaranteed to be fewer than 20 characters.
+**Input Constraints:** Each name is guaranteed to be fewer than 20 characters, and all in one word.
 
 **Test** your solution by feeding it an input file in `txtFiles/BatInputs` using: 
 ```sh
@@ -100,12 +134,6 @@ cat txtFiles/BatInputs/inputFileName.in | ./yourExe
 **Hint 5:** Solving the problem, but for integers: `cFiles/exerciseHints/RemovingFromIntStack.c`.
 
 2) Solve the problem for names with an arbitrary length. 
-
-
-- TO DO: Add more test cases 
-- TO DO: Create non-extended solution
-- TO DO: Create Int Stack solution
-- TO DO: Explain structs 
 
 ### <a name="Exercise2"> Sorting Witches </a>
 
