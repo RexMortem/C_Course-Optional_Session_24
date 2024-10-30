@@ -90,6 +90,5 @@ int main(){
         printf("%d\n", getIntFromStack(&intStack, i));
     }
     
-
     return 0;
 }

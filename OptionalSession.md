@@ -133,7 +133,7 @@ cat txtFiles/BatInputs/inputFileName.in | ./yourExe
 
 **Hint 5:** Solving the problem, but for integers: `cFiles/exerciseHints/RemovingFromIntStack.c`.
 
-2) Solve the problem for names with an arbitrary length. 
+2) Solve the problem for names with an arbitrary length. Use test cases from `txtFiles/ExtBatInputs`.
 
 ### <a name="Exercise2"> Sorting Witches </a>
 
