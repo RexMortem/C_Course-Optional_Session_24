@@ -87,7 +87,7 @@ int main(){
     printf("\n");
 
     for(int i = 0; i < intStack.n; i++){
-        printf("%s\n", getIntFromStack(&intStack, i));
+        printf("%d\n", getIntFromStack(&intStack, i));
     }
     
 
